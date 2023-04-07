@@ -100,7 +100,7 @@ f1()
 func returnfunc() {
     print("return function")
 }
-func defalulepara() -> () -> Void{
+func defalulepara() -> () -> Void {
    return returnfunc
 }
 
@@ -141,10 +141,11 @@ struct PropertyObserver {
     
     var digit : Int = 10 {
         willSet {
-            print("before set value \(digit)")
+            print("before set value \(newValue)")
         }
         didSet {
-            print("after set value \(digit)")
+            print("after set value \(oldValue)")
+            
         }
     }
 }
@@ -162,5 +163,202 @@ var closure  = { (a : Int) -> String in
 }
 var c = closure(5)
 print(c)
+
+enum S {
+    case FB(String)
+    case google
+}
+
+class Sample {
+    lazy var a : Int = 10
+    
+    init(a : Int){
+        self.a = a
+        print("fgds")
+    }
+}
+var asd = Sample(a: 22)
+asd.a
+
+class Initia {
+    weak var a : Initia?
+  var ir : String
+    
+    init(ir : String){
+        self.ir =  ir
+        print("initializw")
+    }
+    deinit{
+        print("deinitialize")
+    }
+}
+var o1 : Initia? = Initia(ir: "hfdhakshf")
+var o2 : Initia? = Initia(ir: "hfdhakshf")
+
+o1?.a = o2
+
+o1 = nil
+o2 = nil
+
+class Check {
+   
+    var delegate : Buynow?
+   
+    func checkBalance(){
+        print("balance is available ")
+        delegate?.nowBuy()
+    }
+}
+protocol Buynow {
+    func nowBuy()
+}
+
+class Buy : Buynow {
+    func nowBuy() {
+        print("now buy it product")
+    }
+}
+
+var check = Check()
+var buy = Buy()
+check.delegate = buy
+check.checkBalance()
+
+//
+enum CampasePoint : CaseIterable {
+    case east
+    case west
+    case north,south
+    
+}
+
+var e = CampasePoint.east
+e = .north
+print(e)
+print(type(of: e))
+
+switch e {
+case .east :
+    print("EAST")
+case .west :
+    print("WEST")
+case .north :
+    print("North")
+case .south :
+    print("South")
+}
+
+let count = CampasePoint.allCases
+
+@objc protocol SDD {
+   @objc optional func sdd()
+}
+
+class Sdd : SDD {
+    func sdd() {
+        print("sddd")
+    }
+}
+
+var ssdd = Sdd()
+ssdd.sdd()
+
+//
+enum IntVal : Int {
+    case num1 ,num2,num3
+}
+var n1 = IntVal.num1.rawValue
+    
+print(n1)
+
+var n2 = IntVal.num2.rawValue
+n2 = 10
+print(n2)
+
+//
+enum M {
+    case a
+    case b
+}
+//
+//struct FG {
+//    var sd : Int  {
+//        get {
+//            return 103
+//        }
+//        set(newValue){
+//            sd = newValue
+//        }
+//    }
+//}
+//var fg = FG()
+//fg.sd = 200
+//print(fg.sd)
+
+func xcv() throws -> Int {
+    print(5)
+    return 6
+}
+try xcv()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@objc protocol Aa {
+   @objc optional func a()
+    
+    func sum()
+}
+
+//extension Aa {
+//    func a() {
+//        print("a")
+//    }
+//}
+
+
+
+
+class MultipleInheritence {
+    
+    func b() {
+        print("b")
+    }
+}
+
+class Multiple :  Aa {
+
+    func sum() {
+        print("sun")
+    }
+    
+    
+    func printText(){
+        print("hello world")
+        
+    }
+    
+//    func a() {
+//        print("shyam")
+//    }
+
+}
+
+var m = Multiple()
+//m.a()
+m.printText()
+//m.b()
 
 
